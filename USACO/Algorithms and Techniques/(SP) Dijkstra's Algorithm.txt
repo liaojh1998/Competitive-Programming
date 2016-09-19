@@ -1,0 +1,34 @@
+Given: lists of vertices, edges, and edge costs, this algorithm `visits' vertices in order of their distance from the source vertex.
+
+- Start by setting the distance of all notes to infinity and the source's distance to 0.
+- At each step, find the vertex u of minimum distance that hasn't been processed already. This vertex's distance is now frozen as the minimal cost of the shortest path to it from the source.
+- Look at appending each neighbor v of vertex u to the shortest path to u. Check vertex v to see if this is a better path than the current known path to v. If so, update the best path information.
+
+In determining the shortest path to a particular vertex, this algorithm determines all shorter paths from the source vertex as well since no more work is required to calculate all shortest paths from a single source to vertices in a graph.
+
+Pseudocode:
+
+# distance(j) is distance from source vertex to vertex j
+# parent(j) is the vertex that precedes vertex j in any shortest path
+#                  (to reconstruct the path subsequently) 
+
+ 1 For all nodes i
+ 2     distance(i) = infinity         	# not reachable yet
+ 3     visited(i) = False
+ 4     parent(i) = nil	# no path to vertex yet 
+
+ 5 distance(source) = 0	# source -> source is start of all paths
+ 6 parent(source) = nil
+ 7   8 while (nodesvisited < graphsize)
+ 9     find unvisited vertex with min distance to source; call it vertex i
+10     assert (distance(i) != infinity, "Graph is not connected") 
+
+11     visited(i) = True	# mark vertex i as visited 
+
+    # update distances of neighbors of i
+12     For all neighbors j of vertex i
+13         if distance(i) + weight(i,j) < distance(j) then
+14             distance(j) = distance(i) + weight(i,j)
+15             parent(j) = i
+
+Running time of this formulation is O(V^2). You can obtain O(E log V) (where E is the number of edges and V is the number of vertices) by using a heap to determine the next vertex to visit, but this is considerably more complex to code and only appreciably faster on large, sparse graphs.
