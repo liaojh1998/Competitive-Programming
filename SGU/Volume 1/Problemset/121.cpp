@@ -46,5 +46,5 @@ int main(){
 	return 0;
 }
 
-//This is inccorect, check: http://blog.csdn.net/winoros/article/details/25006447
-//That has the correct answer
+//This is incorrect, check: http://blog.csdn.net/winoros/article/details/25006447
+//That has the correct solution to the problem
