@@ -1,0 +1,17 @@
+ 1 process(state)
+ 2     for each possible next state from this one
+ 3         enqueue next state 
+
+ 4 search()
+ 5     enqueue initial state
+ 6     while !empty(queue)
+ 7         state = get state from queue
+ 8         process(state)
+
+Time: O(c^d) Space: O(c^d)
+
+Know answers are very near top of tree, or want shallowest answer.
+c is input
+d is the depth of the answer 
+k is the depth searched
+d <= k

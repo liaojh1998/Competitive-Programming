@@ -1,0 +1,105 @@
+bool isPrime(long long N){
+	if(N <= 1) return false;
+	else if(N <= 3) return true;
+	else if(!(N%2) || !(N%3)) return false;
+	for(long long i = 5; i*i <= N; i+= 6){
+		if(!(N%i) || !(N%(i+2)))
+			return false;
+	}
+	return true;
+}
+
+//Sieve of Atkin in C
+#include <math.h>  
+#include <stdio.h>  
+  
+/* limit ? 1000000 */  
+#define LIMIT   (1000000)  
+  
+#define FALSE   (0)  
+#define TRUE    (~FALSE)  
+  
+int main(int argc, char* argv[])  
+{  
+    int sieve_list[LIMIT + 1];  
+    int n, r;  
+    int x, y;  
+    int k, i;  
+  
+    /* is_prime(i) ? false, ? i ? [5, limit] */  
+    for(n = 5; n <= LIMIT; n++)  
+        sieve_list[n] = FALSE;  
+  
+    /* for (x, y) in [1, vlimit] × [1, vlimit]: */  
+    for(x = 1; x <= (int)sqrt(LIMIT); x++)  
+    for(y = 1; y <= (int)sqrt(LIMIT); y++)  
+    {  
+        /* 
+        n ? 4x²+y² 
+        if (n = limit) and (n mod 12 = 1 or n mod 12 = 5): 
+            is_prime(n) ? ¬is_prime(n) 
+        */  
+        n = 4 * x * x + y * y;  
+        if(n <= LIMIT && (n % 12 == 1 || n % 12 == 5))  
+            sieve_list[n] = ~sieve_list[n];  
+        /* 
+        n ? 3x²+y² 
+        if (n = limit) and (n mod 12 = 7): 
+            is_prime(n) ? ¬is_prime(n) 
+        */  
+        n = 3 * x * x + y * y;  
+        if(n <= LIMIT && n % 12 == 7)  
+            sieve_list[n] = ~sieve_list[n];  
+        /* 
+        n ? 3x²-y² 
+        if (x > y) and (n = limit) and (n mod 12 = 11): 
+            is_prime(n) ? ¬is_prime(n) 
+        */  
+        n = 3 * x * x - y * y;  
+        if(x > y && n <= LIMIT && n % 12 == 11)  
+            sieve_list[n] = ~sieve_list[n];  
+  
+    }  
+  
+    /* 
+    for n in [5, vlimit]: 
+        if is_prime(n): 
+            is_prime(k) ? false, k ? {n², 2n², 3n², ..., limit} 
+    */  
+    for(n = 5; n <= sqrt(LIMIT); n++)  
+        if(sieve_list[n] == TRUE)  
+        {  
+            i = 1;  
+            k = i++ * n * n;  
+            while(k <= LIMIT)  
+            {  
+                sieve_list[k] = FALSE;  
+                k = i++ * n * n;  
+            }  
+        }  
+  
+    /* print 2, 3 */  
+    printf("2\n3\n");  
+    /* 
+    for n in [5, limit]: 
+        if is_prime(n): print n 
+    */  
+    for(n = 5; n <= LIMIT; n++)  
+        if(sieve_list[n] == TRUE)  
+            printf("%d\n", n);  
+  
+    return 0;  
+} 
+
+//Sieve of Eratosthenes
+Input: an integer n > 1
+ 
+Let A be an array of Boolean values, indexed by integers 2 to n,
+initially all set to true.
+ 
+for i = 2, 3, 4, ..., not exceeding vn:
+  if A[i] is true:
+    for j = i2, i2+i, i2+2i, i2+3i, ..., not exceeding n?:
+      A[j] := false
+ 
+Output: all i such that A[i] is true.

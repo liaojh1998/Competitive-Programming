@@ -1,0 +1,24 @@
+Dynamic Programming
+
+Definition
+
+Dynamic programming (DP) is a general algorithm design technique for solving problems with overlapping sub-problems. This technique was invented by American mathematician “Richard Bellman” in 1950s.
+
+Key Idea
+
+The key idea is to save answers of overlapping smaller sub-problems to avoid recomputation.
+
+Dynamic Programming Properties
+
+- An instance is solved using the solutions for smaller instances.
+- The solutions for a smaller instance might be needed multiple times, so store their results in a table.
+- Thus each smaller instance is solved only once.
+- Additional space is used to save time.
+
+To apply dynamic programming
+
+1. Find the recursion in the problem
+2. Build a table of possible values
+3. Find the right order to evaluate the results so that partial results are available when needed.
+
+If any of the steps is not applicable chances are the dynamic programming won't help to solve the problem.

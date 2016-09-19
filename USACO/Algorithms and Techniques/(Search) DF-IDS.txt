@@ -1,0 +1,23 @@
+ 1 truncated_dfsearch(hnextpos, depth)
+ 2     if board is covered
+ 3         print solution and exit 
+
+ 4     if depth == 0
+ 5         return 
+
+ 6     for i from nextpos to n*n
+ 7         put knight at i
+ 8         truncated_dfsearch(i+1, depth-1)
+ 9         remove knight at i 
+
+10 dfid_search
+11     for depth = 0 to max_depth
+12        truncated_dfsearch(0, depth)
+
+Time: O(c^d) Space: O(d)
+
+Want to do BFS, don't have enough space, and can spare the time.
+c is input
+d is the depth of the answer 
+k is the depth searched
+d <= k
