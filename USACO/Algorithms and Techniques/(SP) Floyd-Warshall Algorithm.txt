@@ -1,0 +1,27 @@
+The Floyd-Warshall algorithm finds the length of the shortest paths between all pairs of vertices. It requires an adjacency matrix containing edge weights, the algorithm constructs optimal paths by piecing together optimal subpaths.
+
+- Note that the single edge paths might not be optimal and this is okay.
+- Start with all single edge paths. The distance between two vertices is the cost of the edge between them or infinity if there is no such edge.
+- For each pair of vertices u and v, see if there is a vertex w such that the path from u to v through w is shorter than the current known path from to u to v. If so, update it.
+- Miraculously, if ordered properly, the process requires only one iteration.
+
+Pseudocode: 
+
+# dist(i,j) is "best" distance so far from vertex i to vertex j 
+
+# Start with all single edge paths.
+For i = 1 to n do
+    For j = 1 to n do
+        dist(i,j) = weight(i,j) 
+
+For k = 1 to n do	# k is the `intermediate' vertex
+    For i = 1 to n do
+        For j = 1 to n do
+            if (dist(i,k) + dist(k,j) < dist(i,j)) then	# shorter path?
+                dist(i,j) = dist(i,k) + dist(k,j)
+
+This algorithm runs in O(V^3) time. It requires the adjacency matrix form of the graph.
+
+It's very easy to code and get right (only a few lines).
+
+Even if the solution requires only the single source shortest path, this algorithm is recommended, provided the time and memory and are available (chances are, if the adjacency matrix fits in available memory, there is enough time).
