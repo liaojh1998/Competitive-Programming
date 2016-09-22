@@ -1,6 +1,6 @@
 //Title: Tour de France
 //Type: Complete Search
-//Complexity: O(N^4)
+//Complexity: O(N^2)
 //Solution: I wish I could actually go on a tour in france!
 #include <cstdio>
 #include <algorithm>
