@@ -1,10 +1,12 @@
 //Type: Simulation
 #include <cstdio>
 #include <cstring>
-int T, N, M, p, q;
-long long m[150000], total, sum;
+int T, N, M;
+long long m[150000], total, sum, p, q;
 char command[9];
 int main(){
+	//freopen("input.txt", "r", stdin);
+	//freopen("output.txt", "w", stdout);
 	scanf("%d", &T);
 	while(T--){
 		scanf("%d%d", &N, &M);
@@ -16,22 +18,22 @@ int main(){
 			memset(command, 0, sizeof(command));
 			scanf("%s", &command);
 			if(!strcmp(command, "MULTIPLY")){
-				scanf("%d%d", &p, &q);
+				scanf("%lld%lld", &p, &q);
 				m[p]*=q;
 			}else if(!strcmp(command, "ADD")){
-				scanf("%d%d", &p, &q);
+				scanf("%lld%lld", &p, &q);
 				m[p]+=q;
 			}else if(!strcmp(command, "GET")){
-				scanf("%d%d", &p, &q);
+				scanf("%lld%lld", &p, &q);
 				sum = 0;
 				for(int j = p; j <= q; j++)
 					sum+= m[j];
 				printf("%lld\n", sum);
-			}else{
+			}else if(!strcmp(command, "BUHNUBIS")){
 				sum = 0;
 				for(int j = 0; j < N; j++)
 					sum+= m[j];
-				printf("%lld", total - sum);
+				printf("%lld\n", total - sum);
 			}
 		}
 		memset(m, 0, sizeof(m));
