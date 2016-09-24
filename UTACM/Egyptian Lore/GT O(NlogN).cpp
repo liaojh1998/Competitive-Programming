@@ -6,6 +6,7 @@
 int T, N, M, h;
 long long sgt[1<<19], n, initial, p, q;
 char cmd[10];
+//O(logN)
 long long update(int lv, int i, int value){
 	if(lv == h){
 		sgt[(1<<(lv-1))-1+i] = value;
@@ -15,6 +16,7 @@ long long update(int lv, int i, int value){
 	sgt[parent] = sgt[parent] - sgt[child] + update(lv+1, i, value);
 	return sgt[parent];
 }
+//O(2logN)
 long long range(int lv, int low, int high, int multi){
 	if(high < low)
 		return 0;
@@ -30,11 +32,13 @@ int main(){
 	while(T--){
 		scanf("%d%d", &N, &M);
 		h = (int)ceil(log2(N))+1;
+		//O(NlogN)
 		for(int i = 0; i < N; i++){
 			scanf("%lld", &n);
 			update(1, i, n);
 		}
 		initial = sgt[0];
+		//O(2MlogN)
 		for(int i = 0; i < M; i++){
 			scanf("%s", &cmd);
 			if(!strcmp(cmd, "ADD")){
@@ -52,4 +56,5 @@ int main(){
 		}
 		memset(sgt, 0, sizeof(sgt));
 	}
+	return 0;
 }
