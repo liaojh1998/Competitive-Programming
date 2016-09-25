@@ -1,8 +1,0 @@
-Kadane's Algorithm
-
-maxsum = tempsum = 0;
-for i = first to end value
-	tempsum = max(0, tempsum + value(i));
-	maxsum = max(tempsum, maxsum);
-
-maxsum is the maximum subarray sum
