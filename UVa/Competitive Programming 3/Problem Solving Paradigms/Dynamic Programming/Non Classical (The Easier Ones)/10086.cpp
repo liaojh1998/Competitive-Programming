@@ -1,9 +1,10 @@
-//Title:
+//Title: Test the Rods
 //Type: DP
-//Complexity:
-//Solution:
-//State:
-//Transition:
+//Complexity: O((T1+T2)*n*(site total))
+//Solution: Kind of like the knapsack algorithm
+//State: dp[i][j] represent minimum cost of having i tested at NCPC and j tested at BCEW, where j = total-i, base case dp[0][0] = 0 cost
+//Transition: per site: dp[i+k][total-i + (site total-k)] = min(self, dp[i][total-i] + Cij1[k] + Cij2[site total-k])
+//						where total = T1+T2, 0 <= (i+k) <= T1, 0 <= (total-i) + (site total-k) <= T2, 0 <= i <= total, 0 <= k <= site total
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -108,5 +109,43 @@ void readDoubleArr(double *n, int len){
 int main(){
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
+	int T1, T2;
+	while(~readInt(T1) && ~readInt(T2) && (T1 + T2)){
+		int n;
+		readInt(n);
+		int rec[T1+1][T2+1][2], dp[T1+1][T2+1], total = 0;
+		memset(dp, 127, sizeof(dp));
+		memset(rec, 0, sizeof(rec));
+		dp[0][0] = 0;
+		for(int i = 0; i < n; i++){
+			int sizet;
+			readInt(sizet);
+			int Cij1[sizet+1], Cij2[sizet+1];
+			Cij1[0] = Cij2[0] = 0;
+			for(int j = 1; j <= sizet; j++)
+				readInt(Cij1[j]);
+			for(int j = 1; j <= sizet; j++)
+				readInt(Cij2[j]);
+			for(int j = 0; j <= sizet; j++)
+				for(int k = 0; k <= total; k++)
+					if((k+j) <= T1 && ((total-k) + (sizet-j)) <= T2 &&
+						dp[k+j][total-k+sizet-j] > dp[k][total-k] + Cij1[j] + Cij2[sizet-j]){
+						dp[k+j][total-k+sizet-j] = dp[k][total-k] + Cij1[j] + Cij2[sizet-j];
+						rec[k+j][total-k+sizet-j][0] = k;
+						rec[k+j][total-k+sizet-j][1] = total-k;
+					}
+			total += sizet;
+		}
+		printf("%d\n", dp[T1][T2]);
+		int amount[n];
+		for(int i = n-1; i >= 0; i--){
+			amount[i] = T1-rec[T1][T2][0];
+			int t1 = T1, t2 = T2;
+			T1 = rec[t1][t2][0];
+			T2 = rec[t1][t2][1];
+		}
+		for(int i = 0; i < n; i++)
+			printf("%d%s", amount[i], i == n-1 ? "\n\n" : " ");
+	}
 	return 0;
 }

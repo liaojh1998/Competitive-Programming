@@ -1,9 +1,8 @@
-//Title:
+//Title: Spreadsheet
 //Type: DP
-//Complexity:
-//Solution:
-//State:
-//Transition:
+//Solution: I don't think I see any DP here.
+//State: cells[i][j] = number in the cell
+//Transition: cells[i][j] = brute force from other cells recursively
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -105,8 +104,52 @@ void readDoubleArr(double *n, int len){
 		}
 }
 
+int cells[1000][18279];
+bool has[1000][18279];
+char formula[1000][18279][100];
+int solve(int row, int col){
+	if(has[row][col]) return cells[row][col];
+	for(int i = 0; formula[row][col][i]; i++)
+		if(formula[row][col][i] == '+' || formula[row][col][i] == '=')
+			formula[row][col][i] = ' ';
+	istringstream ss(formula[row][col]);
+	string str;
+	int sum = 0;
+	while(ss >> str){
+		int r = 0, c = 0;
+		for(int i = 0; str[i]; i++)
+			if(isdigit(str[i]))
+				r = (r<<1)+(r<<3)+str[i]-48;
+			else
+				c = c * 26 + (str[i]-'A' + 1);
+		sum += solve(r, c);
+	}
+	has[row][col] = true;
+	return (cells[row][col] = sum);
+}
 int main(){
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
+	int Q;
+	readInt(Q);
+	while(Q--){
+		int M, N; //row, col
+		readInt(N);
+		readInt(M);
+		for(int i = 1; i <= M; i++)
+			for(int j = 1; j <= N; j++){
+				readStr(formula[i][j]);
+				has[i][j] = false;
+				if(isdigit(formula[i][j][0])){
+					cells[i][j] = atoi(formula[i][j]);
+					has[i][j] = true;
+				}
+			}
+		//Time to have some intense recursion (THANK GOD NO CYCLIC DEPENDENCIES)
+		for(int i = 1; i <= M; i++)
+			for(int j = 1; j <= N; j++){
+				printf("%d%s", solve(i, j), j == N ? "\n" : " ");
+			}
+	}
 	return 0;
 }

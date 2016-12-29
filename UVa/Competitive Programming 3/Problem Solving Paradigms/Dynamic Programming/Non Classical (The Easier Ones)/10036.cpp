@@ -1,9 +1,9 @@
-//Title:
+//Title: Divisibility
 //Type: DP
-//Complexity:
-//Solution:
-//State:
-//Transition:
+//Complexity: O(NK)
+//Solution: Instead of recursively going through everything with O(2^N), since modulo K is no bigger than 100, we can take advantage of that.
+//State: dp[index][remainder] represent divisibility after +/- operations at index of number with the remainder after modulo, base case dp[index][first number % K] = divisible
+//Transition: dp[i][(j+Ni)%K] = dp[i][(j-Ni+K)%K] = dp[i-1][j]; where i = index, j = remainder, Ni = current number, K = modulo, if dp[last index][0] = true, then definitely divisible
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -108,5 +108,23 @@ void readDoubleArr(double *n, int len){
 int main(){
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
+	int C;
+	readInt(C);
+	while(C--){
+		int N, K, Ni;
+		readInt(N);
+		readInt(K);
+		readInt(Ni);
+		bool dp[N][K];
+		memset(dp, 0, sizeof(dp));
+		dp[0][(Ni%K+K)%K] = true;
+		for(int i = 1; i < N; i++){
+			readInt(Ni);
+			Ni = abs(Ni)%K;
+			for(int j = 0; j < K; j++)
+				if(dp[i-1][j]) dp[i][(j+Ni)%K] = dp[i][(j-Ni+K)%K] = true;
+		}
+		printf("%s\n", dp[N-1][0] ? "Divisible" : "Not divisible");
+	}
 	return 0;
 }

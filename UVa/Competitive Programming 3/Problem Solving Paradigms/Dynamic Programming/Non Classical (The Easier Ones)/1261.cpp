@@ -1,9 +1,6 @@
-//Title:
+//Title: String Popping
 //Type: DP
-//Complexity:
-//Solution:
-//State:
-//Transition:
+//Solution: Just a complete search will do actually, no state no transition
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -105,8 +102,43 @@ void readDoubleArr(double *n, int len){
 		}
 }
 
+bool dfs(char *str){
+	bool pos = true;
+	int len = strlen(str);
+	if(len == 1) return false;
+	for(int i = 0; i < len && pos; i++)
+		if(str[i] != str[0]) pos = false;
+	if(pos) return true;
+	for(int i = 0; i < len; i++){
+		int j = i;
+		while(str[j] == str[i]) j++;
+		if(j-i > 1){
+			char temp[26];
+			memset(temp, 0, sizeof(temp));
+			if(i == 0)
+				strncpy(temp, str+j, len-j);
+			else if(j == len)
+				strncpy(temp, str, i);
+			else{
+				strncpy(temp, str, i);
+				strncat(temp+i, str+j, len-j);
+			}
+			//printf("%s\n", temp);
+			if(dfs(temp)) return true;
+		}
+		i = j-1;
+	}
+	return false;
+}
 int main(){
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
+	int N;
+	readInt(N);
+	while(N--){
+		char str[26];
+		readStr(str);
+		printf("%d\n", dfs(str) ? 1 : 0);
+	}
 	return 0;
 }
