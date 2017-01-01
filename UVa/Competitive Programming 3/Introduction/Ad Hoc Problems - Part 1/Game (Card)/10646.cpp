@@ -1,7 +1,7 @@
-//Title:
-//Type:
-//Complexity:
-//Solution:
+//Title: What is the Card?
+//Type: Simulation
+//Complexity: O(cards)
+//Solution: Simulate process
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -108,5 +108,27 @@ void readDoubleArr(double *n, int len){
 int main(){
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
+	int C;
+	readInt(C);
+	for(int idx = 1; idx <= C; idx++){
+		char tcards[25][5], bcards[27][5];
+		memset(tcards, 0, sizeof(tcards));
+		memset(bcards, 0, sizeof(bcards));
+		for(int i = 26; i >= 0; i--)
+			readStr(bcards[i]);
+		for(int i = 24; i >= 0; i--)
+			readStr(tcards[i]);
+		int start = 0, Y = 0;
+		for(int i = 0; i < 3; i++){
+			int X = bcards[start][0] >= '2' && bcards[start][0] <= '9' ? bcards[start][0] - '0' : 10;
+			Y += X;
+			start = start + 1 + (10 - X);
+		}
+		//printf("%d %d\n", Y, start);
+		if(Y <= (27-start))
+			printf("Case %d: %s\n", idx, bcards[27-Y]);
+		else
+			printf("Case %d: %s\n", idx, tcards[25-(Y-(27-start))]);
+	}
 	return 0;
 }

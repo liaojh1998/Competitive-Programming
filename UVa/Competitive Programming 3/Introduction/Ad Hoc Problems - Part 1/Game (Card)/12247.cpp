@@ -1,7 +1,7 @@
-//Title:
-//Type:
-//Complexity:
-//Solution:
+//Title: Jollo
+//Type: Simulation
+//Complexity: O(5)
+//Solution: Trial and error, different combinations
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -108,5 +108,43 @@ void readDoubleArr(double *n, int len){
 int main(){
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
+	int prince[2], sister[3];
+	bool taken[55];
+	while(readInt(sister[0]) && sister[0]){
+		memset(taken, 0, sizeof(taken));
+		readInt(sister[1]);
+		readInt(sister[2]);
+		readInt(prince[0]);
+		readInt(prince[1]);
+		taken[prince[0]] = 1;
+		taken[prince[1]] = 1;
+		taken[sister[0]] = 1;
+		taken[sister[1]] = 1;
+		taken[sister[2]] = 1;
+		sort(sister, sister+3);
+		sort(prince, prince+2);
+		//Must lose condition
+		if(sister[2] > prince[1] && sister[1] > prince[0]){
+			printf("-1\n");
+			continue;
+		}
+		//rate cards: 0 - must lose, 1 - can win 1 card, 2 - can win 2 cards, 3 - must win
+		int rate[2], ans;
+		memset(rate, 0, sizeof(rate));
+		if(prince[0] > sister[0]) rate[0] = 1;
+		if(prince[1] > sister[0]) rate[1] = 1;
+		if(prince[0] > sister[1]) rate[0] = 2;
+		if(prince[1] > sister[1]) rate[1] = 2;
+		if(prince[0] > sister[2]) rate[0] = 3;
+		if(prince[1] > sister[2]) rate[1] = 3;
+		if(rate[0] <= 1 && rate[1] >= 2)
+			ans = sister[2]+1;
+		else if(rate[0] == 2 && rate[1] >= 2)
+			ans = sister[1]+1;
+		else if(rate[0] == 3 && rate[1] == 3)
+			ans = 1;
+		while(taken[ans]) ans++;
+		printf("%d\n", ans > 52 ? -1 : ans);
+	}
 	return 0;
 }
