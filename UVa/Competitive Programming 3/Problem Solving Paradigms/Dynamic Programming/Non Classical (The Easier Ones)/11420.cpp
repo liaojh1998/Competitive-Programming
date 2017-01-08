@@ -1,9 +1,9 @@
-//Title: Squares
+//Title: Chest of Drawers
 //Type: DP
-//Complexity: O(root(N)*N)
-//Solution: Knapsack
-//State: dp[i] = minimum of squares needed to sum to i
-//Transition: dp[i] = min(dp[i], dp[i-j*j] + 1), 1 <= j <= sqrt(i);
+//Complexity:
+//Solution:
+//State:
+//Transition:
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -110,20 +110,5 @@ void readDoubleArr(double *n, int len){
 int main(){
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
-	int dp[10005];
-	dp[0] = 0;
-	for(int i = 1; i <= 10000; i++){
-		int maxi = sqrt(i);
-		dp[i] = 10000;
-		for(int j = 1; j <= maxi; j++)
-			if(i-j*j >= 0 && dp[i] > dp[i-j*j] + 1)
-				dp[i] = dp[i-j*j] + 1;
-	}
-	int T, N;
-	readInt(T);
-	while(T--){
-		readInt(N);
-		printf("%d\n", dp[N]);
-	}
 	return 0;
 }
