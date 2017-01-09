@@ -11,9 +11,11 @@
 		//	f(5, 1, 1) = UUULL, ULULL, LUUUL, LULUL, ULLUL = 5
 		//	f(5, 1, 1) comes from 2 different combinations, 4 drawers secured 0 with last locked adding a locked drawer to the end, and 4 drawers secured 1 with last unlocked adding a locked drawer to the end.
 		//	or f(5, 1, 1) = f(4, 0, 1) (UUUL, ULUL) + f(4, 1, 0) (LUUU, LULU, ULLU) = 5
+		//	total(5, 1) = f(5, 1, 0) + f(5, 1, 1) = 10
 		//	Thus:
 //State: dp[i][j][k] = different combinations that represent i drawers secured j with last locked or unlocked, base case dp[1][0][0] = dp[1][1][1] = 1;
 //Transition: dp[i][j][0] = dp[i-1][j][0] + dp[i-1][j][1], dp[i][j][1] = (j-1 >= 0 ? dp[i-1][j-1][1] : 0) + d[i-1][j][0], where 2 <= i <= 65, 0 <= j <= i;
+		//	Total combinations at dp[i][j][0] + dp[i][j][1];
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
