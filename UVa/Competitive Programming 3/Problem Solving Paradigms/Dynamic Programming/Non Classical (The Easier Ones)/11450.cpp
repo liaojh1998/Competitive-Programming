@@ -1,9 +1,9 @@
-//Title: How do you add?
+//Title: Wedding shopping
 //Type: DP
-//Complexity: O(K*N^2)
-//Solution: Simple DP, similar to 10910 using combinatorics
-//State: dp[i][j] = total number of combinations that i numbers can add up to j, base case dp[1][i] = 1, 0 <= i <= 100;
-//Transition: dp[i][j] = sum(dp[i-1][j-k]), 2 <= i <= 100, 100 >= j >= 0, j >= k >= 0;
+//Complexity: O(M*C*K)
+//Solution: Knapsack problem
+//State: dp[i][j] = maximum budget used at garment i and budget j
+//Transition: dp[i][j] = (i == 1 || (i != 1 && dp[i-1][j-Ki]) (condition for no solution) ? max(dp[i][j], dp[i-1][j-Ki], dp[i][j-1]) : max(dp[i][j], dp[i-1][j-1]), 1 <= i <= C, Ki <= j <= M;
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -110,16 +110,30 @@ void readDoubleArr(double *n, int len){
 int main(){
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
-	int dp[105][105]; //K, N
-	memset(dp, 0, sizeof(dp));
-	fill_n(dp[1], 105, 1);
-	for(int i = 2; i <= 100; i++)
-		for(int j = 100; j >= 0; j--)
-			for(int k = j; k >= 0; k--)
-				dp[i][j] = (dp[i][j] + dp[i-1][j-k])%1000000;
-	int N, K;
-	while(readInt(N) && readInt(K) && (N+K)){
-		printf("%d\n", dp[K][N]);
+	int T;
+	readInt(T);
+	while(T--){
+		int M, C, K, Ki;
+		readInt(M);
+		readInt(C);
+		int dp[C+5][M+5];
+		memset(dp, 0, sizeof(dp));
+		for(int i = 1; i <= C; i++){
+			readInt(K);
+			for(int j = 0; j < K; j++){
+				readInt(Ki);
+				for(int k = Ki; k <= M; k++){
+					if((i == 1 || (i != 1 && dp[i-1][k-Ki])) && dp[i][k] < dp[i-1][k-Ki] + Ki)
+						dp[i][k] = dp[i-1][k-Ki] + Ki;
+					if(dp[i][k-1] > dp[i][k])
+						dp[i][k] = dp[i][k-1];
+				}
+			}
+		}
+		if(dp[C][M])
+			printf("%d\n", dp[C][M]);
+		else
+			printf("no solution\n");
 	}
 	return 0;
 }

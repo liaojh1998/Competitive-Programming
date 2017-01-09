@@ -1,9 +1,9 @@
-//Title: How do you add?
+//Title: sqrt log sin
 //Type: DP
-//Complexity: O(K*N^2)
-//Solution: Simple DP, similar to 10910 using combinatorics
-//State: dp[i][j] = total number of combinations that i numbers can add up to j, base case dp[1][i] = 1, 0 <= i <= 100;
-//Transition: dp[i][j] = sum(dp[i-1][j-k]), 2 <= i <= 100, 100 >= j >= 0, j >= k >= 0;
+//Complexity: O(1000000)
+//Solution: Brute force
+//State: dp[i] = xi
+//Transition: dp[i] = dp[i-sqrt(i)] + dp[ln(i)] + dp[i*sin(i)*sin(i)]
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -107,19 +107,16 @@ void readDoubleArr(double *n, int len){
 		}
 }
 
+#define MOD (1000000)
+int dp[1000005];
 int main(){
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
-	int dp[105][105]; //K, N
-	memset(dp, 0, sizeof(dp));
-	fill_n(dp[1], 105, 1);
-	for(int i = 2; i <= 100; i++)
-		for(int j = 100; j >= 0; j--)
-			for(int k = j; k >= 0; k--)
-				dp[i][j] = (dp[i][j] + dp[i-1][j-k])%1000000;
-	int N, K;
-	while(readInt(N) && readInt(K) && (N+K)){
-		printf("%d\n", dp[K][N]);
-	}
+	dp[0] = 1;
+	for(int i = 1; i <= 1000000; i++)
+		dp[i] = (dp[(int)(i-sqrt(i))] + dp[(int)log(i)] + dp[(int)(i*(sin(i)*sin(i)))])%MOD;
+	int i;
+	while(readInt(i) && ~i)
+		printf("%d\n", dp[i]);
 	return 0;
 }
