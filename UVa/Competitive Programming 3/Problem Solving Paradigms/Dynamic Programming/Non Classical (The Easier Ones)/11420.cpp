@@ -1,9 +1,19 @@
 //Title: Chest of Drawers
 //Type: DP
-//Complexity:
-//Solution:
-//State:
-//Transition:
+//Complexity: O(n*s)
+//Solution: Example n = 5, s = 1
+		//	We'll keep a variable of whether the last drawer is locked or unlocked
+		//	let f(n, s, d) represent the different combinations of having n drawers securing at least s with the last drawer being unlocked (0) or locked (1)
+		//	Let U represent unlocked, L represent locked
+		//	f(5, 1, 0) = LUUUU, LULUU, ULLUU, LUULU, UULLU = 5
+		//	f(5, 1, 0) comes from 2 different combinations, 4 drawers secured 1 with last unlocked adding a locked drawer to the end, and 4 drawers secured 1 with last locked and adding an unlocked drawer to the end.
+		//	or f(5, 1, 0) = f(4, 1, 0) (LUUU, LULU, ULLU) + f(4, 1, 1) (LUUL, UULL) = 5
+		//	f(5, 1, 1) = UUULL, ULULL, LUUUL, LULUL, ULLUL = 5
+		//	f(5, 1, 1) comes from 2 different combinations, 4 drawers secured 0 with last locked adding a locked drawer to the end, and 4 drawers secured 1 with last unlocked adding a locked drawer to the end.
+		//	or f(5, 1, 1) = f(4, 0, 1) (UUUL, ULUL) + f(4, 1, 0) (LUUU, LULU, ULLU) = 5
+		//	Thus:
+//State: dp[i][j][k] = different combinations that represent i drawers secured j with last locked or unlocked, base case dp[1][0][0] = dp[1][1][1] = 1;
+//Transition: dp[i][j][0] = dp[i-1][j][0] + dp[i-1][j][1], dp[i][j][1] = (j-1 >= 0 ? dp[i-1][j-1][1] : 0) + d[i-1][j][0], where 2 <= i <= 65, 0 <= j <= i;
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -110,5 +120,17 @@ void readDoubleArr(double *n, int len){
 int main(){
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
+	long long dp[70][70][2];
+	memset(dp, 0, sizeof(dp));
+	dp[1][0][0] = 1;
+	dp[1][1][1] = 1;
+	for(int i = 2; i <= 65; i++)
+		for(int j = 0; j <= i; j++){
+			dp[i][j][0] = dp[i-1][j][0] + dp[i-1][j][1];
+			dp[i][j][1] = dp[i-1][j][0] + (j-1 >= 0 ? dp[i-1][j-1][1] : 0);
+		}
+	int n, s;
+	while(readInt(n) && readInt(s) && n >= 0 && s >= 0)
+		printf("%lld\n", dp[n][s][0]+dp[n][s][1]);
 	return 0;
 }
