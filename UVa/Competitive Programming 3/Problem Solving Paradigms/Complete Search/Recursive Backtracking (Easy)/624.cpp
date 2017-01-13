@@ -1,5 +1,5 @@
 //Title: CD
-//Type: Recursive Backtracking
+//Type: Complete Search
 //Complexity: O(tracks!)
 //Solution: It's easy just to do this in DP, but for the sake of practicing DFS, let's do that.
 #include <bits/stdc++.h>

@@ -1,5 +1,5 @@
 //Title: Sum It Up
-//Type: Recursive Backtracking
+//Type: Complete Search
 //Complexity: O(12!)
 //Solution: Pure backtracking material
 #include <bits/stdc++.h>

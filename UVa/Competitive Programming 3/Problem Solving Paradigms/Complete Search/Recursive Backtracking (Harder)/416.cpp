@@ -1,7 +1,7 @@
-//Title: The dominoes solitarie
+//Title: LED Test
 //Type: Complete Search
-//Complexity: O(m!)
-//Solution: Modified Fleury's algorithm for Eulerian paths
+//Complexity: O(n)
+//Solution: This is no backtracking. Pure simulation.
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -105,49 +105,66 @@ void readDoubleArr(double *n, int len){
 		}
 }
 
-int n, m, start, finish, edge[20][20], size[20];
-bool found, used[20][20];
-void dfs(int ctr, int cur){
-	if(ctr == n && cur == finish){
-		found = true;
-		printf("YES\n");
-		return;
-	}
-	if(ctr == n)
-		return;
-	int index;
-	for(int i = 0; i < size[cur] && !found; i++)
-		if(!used[cur][i]){
-			used[cur][i] = true;
-			for(index = 0; index < size[edge[cur][i]]; index++)
-				if(edge[edge[cur][i]][index] == cur && !used[edge[cur][i]][index]) break;
-			used[edge[cur][i]][index] = true;
-			dfs(ctr+1, edge[cur][i]);
-			used[cur][i] = false;
-			used[edge[cur][i]][index] = false;
-		}
-}
+int digit[10], seq[15];
 int main(){
 	//freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
+	digit[0] = ((1<<6)-1) << 1;
+	digit[1] = ((1<<2)-1) << 4;
+	digit[2] = (((1<<2)-1) << 5) + (((1<<2)-1) << 2) + 1;
+	digit[3] = (((1<<4)-1) << 3) + 1;
+	digit[4] = (((1<<2)-1) << 4) + ((1<<2)-1);
+	digit[5] = (1 << 6) + (((1<<2)-1) << 3) + ((1<<2)-1);
+	digit[6] = (1 << 6) + ((1<<5)-1);
+	digit[7] = ((1<<3)-1) << 4;
+	digit[8] = (1<<7)-1;
+	digit[9] = (((1<<4)-1) << 3) + ((1<<2)-1);
+	//0 - 1111110, 1 - 0110000, 2 - 1101101, 3 - 1111001, 4 - 0110011
+	//5 - 1011011, 6 - 1011111, 7 - 1110000, 8 - 1111111, 9 - 1111011
+	int n;
 	while(readInt(n) && n){
-		readInt(m);
-		memset(size, 0, sizeof(size));
-		int temp, u, v;
-		readInt(temp);
-		readInt(start);
-		readInt(finish);
-		readInt(temp);
-		for(int i = 0; i < m; i++){
-			readInt(u);
-			readInt(v);
-			edge[u][size[u]++] = v;
-			edge[v][size[v]++] = u;
+		char str[10];
+		memset(seq, 0, sizeof(seq));
+		for(int i = 0; i < n; i++){
+			readStr(str);
+			for(int j = 6; j >= 0; j--)
+				if(str[j] == 'Y')
+					seq[i] += (1 << (6-j));
 		}
-		dfs(0, start);
-		if(!found)
-			printf("NO\n");
-		found = false;
+		bool failed[10], match = false;
+		for(int i = n-1; i < 10 && !match; i++){
+			memset(failed, 0, sizeof(failed));
+			bool possible = true;
+			for(int j = 0; j < 7; j++){
+				if((seq[0] & (1 << j)) && !(digit[i] & (1 << j))){
+					possible = false;
+					break;
+				}
+				if(!(seq[0] & (1 << j)) && (digit[i] & (1 << j)))
+					failed[j] = true;
+			}
+			/*for(int j = 0; j < 7; j++)
+				printf("%d", failed[j]);
+			printf("\n");*/
+			if(possible){
+				//printf("%d\n", i);
+				match = true;
+				for(int j = 1; j < n && match; j++){
+					for(int k = 0; k < 7; k++){
+						if((seq[j] & (1 << k)) && (failed[k] || !(digit[i-j] & (1 << k)))){
+							match = false;
+							break;
+						}
+						if(!(seq[j] & (1 << k)) && (digit[i-j] & (1 << k)))
+							failed[k] = true;
+					}
+				}
+			}
+		}
+		if(match)
+			printf("MATCH\n");
+		else
+			printf("MISMATCH\n");
 	}
 	return 0;
 }

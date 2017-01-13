@@ -1,5 +1,5 @@
 //Title: Bars
-//Type: Complete Search/Recursive Backtracking
+//Type: Complete Search
 //Complexity: O(p!!)
 //Solution: Making my own dfs bitmasking techniques, finally realizing how n-queen problems work. 0-1 bounded knapsack also works here.
 #include <bits/stdc++.h>

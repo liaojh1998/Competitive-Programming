@@ -1,5 +1,5 @@
 //Title: Back to the 8-Queens
-//Type: Recursive Backtracking
+//Type: Complete Search
 //Complexity: O(8!!)
 //Solution: 8.2.1 is probably the most amazing section I've ever seen for queen bitmask backtracking.
 //http://blog.csdn.net/mobius_strip/article/details/47817181 - 8 Queens give 92 different combinations

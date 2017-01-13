@@ -1,5 +1,5 @@
 //Title: Y2K Accounting Bug
-//Type: Recursive Backtracking
+//Type: Complete Search
 //Complexity: O(2^12)
 //Solution: Just dfs.
 #include <bits/stdc++.h>

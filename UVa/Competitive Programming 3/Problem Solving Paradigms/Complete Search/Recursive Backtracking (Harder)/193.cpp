@@ -1,5 +1,5 @@
 //Title: Graph Coloring
-//Type: Recursive Backtracking
+//Type: Complete Search
 //Complexity: O(100!) ?
 //Solution: This is one hell of a heavily pruned problem?
 #include <bits/stdc++.h>

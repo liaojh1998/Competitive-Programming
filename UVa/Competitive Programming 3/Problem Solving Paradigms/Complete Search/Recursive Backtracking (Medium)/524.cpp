@@ -1,5 +1,5 @@
 //Title: Prime Ring Problem
-//Type: Recursive Backtracking
+//Type: Complete Search
 //Complexity: (16!)
 //Solution: Pruned recursive backtracking
 #include <bits/stdc++.h>
