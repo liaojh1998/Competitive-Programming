@@ -6,7 +6,7 @@ LANG: C++
 //Title: Electric Fence
 //Type: Computational Geometry
 //Complexity: O(1)
-//Solution: Pick's algorithm (Area of a polygon = number of lattice points inside the polygon + (lattice points on polygon's edge)/2 - 1)
+//Solution: Pick's theorem (Area of a polygon = number of lattice points inside the polygon + (lattice points on polygon's edge)/2 - 1)
 		//	Area of a triangle = m*p/2;
 		//	Number of lattice points on edge = gcd(edgex, edgey) + 1 (because slope = (y2-y1)/(x2-x1) = (a*gcd(y2-y1, x2-x1))/(b*gcd(y2-y1, x2-x1)))
 		//	gcd gives us number of points, but because we repeat number of lattice points at endpoints, the +1 is not needed
