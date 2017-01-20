@@ -5,7 +5,7 @@ LANG: C++
 */
 //Title: Beef McNuggets
 //Type: DP
-//Complexity: O(256*256 - 2*256)
+//Complexity: O(N*(M^2-2M))
 //Solution: I don't know the proof, but according to USACO, the largest number a coprime cannot make is N*M - N - M, which is the product minus the sum.
 		//	This is related to the gcd of coprimes ending at 1, in which the difference between all the later sums of coprimes will have a minimum difference of 1.
 		//	Therefore, if numbers have gcd of more than 1, then the answer is out of bounds.
