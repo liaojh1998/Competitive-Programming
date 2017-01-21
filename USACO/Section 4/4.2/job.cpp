@@ -6,7 +6,22 @@ LANG: C++
 //Title: Job Processing
 //Type: Greedy
 //Complexity: O(N*M1 + N*M2 + N)
-//Solution:
+//Solution: An interesting smart greedy problem that I couldn't understand for a very long while.
+		//	We can simulate the 2 processes greedily to gain the amount of time required to finish the ith product
+		//	Then we can greedily try to match what's first processed by 'A' as the last processed by 'B' after processing all others processed by 'A' to minimize 'B'.
+		//	Example: 5 2 3, 1 1, 3 1 4
+		//	We get:
+		//		1 2 3 4 5
+		//	A	1 1 2 2 3
+		//	B	1 2 3 3 4
+		//	The case we take here is match 1 and 5, 1+4 = 5, minimum required to process 1 + minimum required to process everything, this works because we assumed that B processed the first one after all others in A has been processed by A and also processed by B.
+		//	Example: 4 4 4, 3 90 190 290, 1 1 1 1
+		//	We get:
+		//		1 2 3 4
+		//	A	3 6 9 12
+		//	B	1 1 1 1
+		//	The case of course isn't 1 and 4 because B couldn't assume A has processed everything, but if we take 4 and 1, B, once again, processed the first after it assumed that all in A has been processed and also processed in B.
+		//	Maximizing one of these cases, thus, will always give the minimum required to process everything.
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
