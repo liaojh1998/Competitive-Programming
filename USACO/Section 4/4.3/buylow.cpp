@@ -11,7 +11,7 @@ LANG: C++
 		//	For the sake of no repetitions, simply create a next array for identical integers, where the first identical point to the next identical index and if
 		//	there exist such an integer less than both and is at an index later than both, or next[j] > j && next[j] < i, continue and do not add the permuted amount.
 		//	This is correct because the previous integer > arr[i] will have an amount <= later integer > arr[i], hence the latter is the one to take.
-//State: dp[i] = maximum LDS
+//State: dp[i] = maximum LDS as number i as the end
 //Transition: dp[i] = (arr[j] > arr[i]) ? max(dp[j]+1, dp[i]), 0 <= j < i;
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
