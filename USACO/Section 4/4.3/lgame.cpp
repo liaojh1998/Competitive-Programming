@@ -116,15 +116,13 @@ struct tree{
 	char* word;
 	tree* next[30];
 	tree(){
-		used = fused = false;
-		has = false;
-		for(int i = 0; i < 26; i++)
-			next[i] = NULL;
+		used = fused = has = false;
+		memset(next, 0, sizeof(next));
 	}
 };
 tree* trie[30];
 int table[30] = {2, 5, 4, 4, 1, 6, 5, 5, 1, 7, 6, 3, 5, 2, 3, 5, 7, 2, 1, 2, 4, 6, 6, 7, 5, 7};
-int addWord(char* word, char* test){
+void addWord(char* word, char* test){
 	int len = strlen(word), s = strlen(test), used = 0;
 	bool possible = true;
 	for(int i = 0; i < len; i++){
@@ -135,14 +133,12 @@ int addWord(char* word, char* test){
 				impossible = false;
 				break;
 			}
-		if(impossible) return 0;
+		if(impossible) return;
 	}
-	int score = table[word[0]-'a'];
 	if(trie[word[0]-'a'] == NULL)
 		trie[word[0]-'a'] = new tree;
 	tree* cur = trie[word[0]-'a'];
 	for(int i = 1; i < len; i++){
-		score += table[word[i]-'a'];
 		if(cur->next[word[i]-'a'] == NULL)
 			cur->next[word[i]-'a'] = new tree;
 		cur = cur->next[word[i]-'a'];
@@ -150,18 +146,13 @@ int addWord(char* word, char* test){
 	cur->word = new char[10];
 	cur->has = true;
 	memcpy(cur->word, word, sizeof(char)*10);
-	return score;
 }
-int readDict(char* test){
+void readDict(char* test){
 	char str[10];
 	freopen("lgame.dict", "r", stdin);
 	int maxScore = 0;
-	while(~readStr(str) && str[0] != '.'){
-		int score = addWord(str, test);
-		if(score > maxScore)
-			maxScore = score;
-	}
-	return maxScore;
+	while(~readStr(str) && str[0] != '.')
+		addWord(str, test);
 }
 void sdfs(int &maxScore, vector<pair<char*, char*> >* ans, tree* first, tree* cur, char* str, int size, int used, int curScore){
 	if(curScore && curScore == maxScore && cur->has && !cur->fused && !first->sused.count(cur)){
