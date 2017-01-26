@@ -1,12 +1,7 @@
-/*
-ID: liaojh11
-PROG: race3
-LANG: C++
-*/
-//Title: Street Race
-//Type: DFS
-//Complexity: O(V*E)
-//Solution: Enumerate all nodes for a dfs and see if removing it gets to the result, then dfs from node to see there's such a cycle to previous paths that meets it again
+//Title: k-th divisor
+//Type: Brute Force
+//Complexity: O(root(N))
+//Solution: Too lazy to optimize, simply brute force search all divisors and sort.
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -110,65 +105,24 @@ void readDoubleArr(double *n, int len){
 		}
 }
 
-vector<int> G[55];
-bool vis[55][55], svis[55][55];
-int size, questioned, upoints[55], spoints[55], upointsize, spointsize;
-bool dfs(int node){
-	if(node == size-1)
-		return false;
-	if(node == questioned)
-		return true;
-	int s = G[node].size();
-	bool possible = true;
-	for(int i = 0; i < s; i++)
-		if(!vis[node][i]){
-			vis[node][i] = true;
-			possible &= dfs(G[node][i]);
-		}
-	return possible;
-}
-bool sdfs(int node){
-	bool unsplit = true;
-	int s = G[node].size();
-	for(int i = 0; i < s; i++){
-		if(G[node][i] != node && vis[node][i])
-			return false;
-		if(!svis[node][i]){
-			svis[node][i] = true;
-			unsplit &= sdfs(G[node][i]);
-		}
-	}
-	return unsplit;
-}
 void solve(){
-	freopen("race3.in", "r", stdin);
-	freopen("race3.out", "w", stdout);
-	int cur;
-	while(readInt(cur) && ~cur){
-		if(cur == -2){
-			size++;
-			continue;
-		}
-		G[size].push_back(cur);
+	//freopen("input.txt", "r", stdin);
+	//freopen("output.txt", "w", stdout);
+	long long n, k;
+	readLL(n);
+	readLL(k);
+	vector<long long> ans;
+	for(long long i = 1; i*i <= n; i++){
+		if(n%i) continue;
+		ans.push_back(i);
+		if(n/i != i)
+			ans.push_back(n/i);
 	}
-	for(int i = 1; i < size-1; i++){
-		questioned = i;
-		memset(vis, 0, sizeof(vis));
-		memset(svis, 0, sizeof(svis));
-		bool possible = dfs(0);
-		if(possible){
-			upoints[upointsize++] = i;
-			bool split = sdfs(i);
-			if(split)
-				spoints[spointsize++] = i;
-		}
-	}
-	printf("%d%s", upointsize, upointsize ? " " : "\n");
-	for(int i = 0; i < upointsize; i++)
-		printf("%d%s", upoints[i], i == upointsize-1 ? "\n" : " ");
-	printf("%d%s", spointsize, spointsize ? " " : "\n");
-	for(int i = 0; i < spointsize; i++)
-		printf("%d%s", spoints[i], i == spointsize-1 ? "\n" : " ");
+	sort(ans.begin(), ans.end());
+	if(ans.size() < k)
+		printf("-1\n");
+	else
+		printf("%I64d\n", ans[k-1]);
 }
 int main(){
 	solve();

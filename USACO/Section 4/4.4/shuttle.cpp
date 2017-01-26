@@ -1,12 +1,12 @@
 /*
 ID: liaojh11
-PROG: race3
+PROG: shuttle
 LANG: C++
 */
-//Title: Street Race
-//Type: DFS
-//Complexity: O(V*E)
-//Solution: Enumerate all nodes for a dfs and see if removing it gets to the result, then dfs from node to see there's such a cycle to previous paths that meets it again
+//Title: Shuttle Puzzle
+//Type: Brute Force
+//Complexity: O(N)
+//Solution: Figure out the pattern, simply output it.
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -110,65 +110,37 @@ void readDoubleArr(double *n, int len){
 		}
 }
 
-vector<int> G[55];
-bool vis[55][55], svis[55][55];
-int size, questioned, upoints[55], spoints[55], upointsize, spointsize;
-bool dfs(int node){
-	if(node == size-1)
-		return false;
-	if(node == questioned)
-		return true;
-	int s = G[node].size();
-	bool possible = true;
-	for(int i = 0; i < s; i++)
-		if(!vis[node][i]){
-			vis[node][i] = true;
-			possible &= dfs(G[node][i]);
-		}
-	return possible;
-}
-bool sdfs(int node){
-	bool unsplit = true;
-	int s = G[node].size();
-	for(int i = 0; i < s; i++){
-		if(G[node][i] != node && vis[node][i])
-			return false;
-		if(!svis[node][i]){
-			svis[node][i] = true;
-			unsplit &= sdfs(G[node][i]);
-		}
+void recur(vector<int>* ans, int start, int level, int maxLevel, bool forward){
+	int cur = start;
+	for(int i = 0; i < level; i++){
+		ans->push_back(cur);
+		if(forward)
+			cur += 2;
+		else
+			cur -= 2;
 	}
-	return unsplit;
+	if(level == maxLevel) return;
+	recur(ans, cur + (forward ? -1 : 1), level+1, maxLevel, !forward);
+	cur = start;
+	for(int i = 0; i < level; i++){
+		ans->push_back(cur);
+		if(forward)
+			cur += 2;
+		else
+			cur -= 2;
+	}
 }
 void solve(){
-	freopen("race3.in", "r", stdin);
-	freopen("race3.out", "w", stdout);
-	int cur;
-	while(readInt(cur) && ~cur){
-		if(cur == -2){
-			size++;
-			continue;
-		}
-		G[size].push_back(cur);
-	}
-	for(int i = 1; i < size-1; i++){
-		questioned = i;
-		memset(vis, 0, sizeof(vis));
-		memset(svis, 0, sizeof(svis));
-		bool possible = dfs(0);
-		if(possible){
-			upoints[upointsize++] = i;
-			bool split = sdfs(i);
-			if(split)
-				spoints[spointsize++] = i;
-		}
-	}
-	printf("%d%s", upointsize, upointsize ? " " : "\n");
-	for(int i = 0; i < upointsize; i++)
-		printf("%d%s", upoints[i], i == upointsize-1 ? "\n" : " ");
-	printf("%d%s", spointsize, spointsize ? " " : "\n");
-	for(int i = 0; i < spointsize; i++)
-		printf("%d%s", spoints[i], i == spointsize-1 ? "\n" : " ");
+	freopen("shuttle.in", "r", stdin);
+	freopen("shuttle.out", "w", stdout);
+	int N;
+	readInt(N);
+	vector<int> ans;
+	recur(&ans, N, 2, N+1, true);
+	ans.push_back(N+1);
+	int size = ans.size();
+	for(int i = 0; i < size; i++)
+		printf("%d%s", ans[i], (i+1)%20 && i != size-1 ? " " : "\n");
 }
 int main(){
 	solve();
