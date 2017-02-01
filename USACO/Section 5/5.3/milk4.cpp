@@ -1,14 +1,14 @@
 /*
 ID: liaojh11
-PROG: theme
+PROG: milk4
 LANG: C++
 */
-//Title: Musical Themes
+//Title: Milk Measuring
 //Type: DP
-//Complexity: O(N^2)
-//Solution: I'm either really thrown off, or subsequence doesn't mean subsequence in this problem, it's a contiguous subsequence. Either ways, it's very DP-like except a dp table will MLE.
-		//	Therefore, just try different distancing of contiguous subsequence and see the maximum length at those different distances.
-		//	There are O(NlogN) solutions by using binary search and keeping a sorted array of summed up notes but I'll have to look into that.
+//Complexity: O(Q*P)
+//Solution: Began with the DP, failed due to a non-optimal solution in DP part, decided to do IDS, found it inefficient. Using official USACO DP solution.
+//State: dp[i] = minimum pails required at i quarts, using a temporary dp to keep track of non-optimal solutions in case of later optimal,
+//Transition: dp[i] = min(tempdp[i], dp[i]), tempdp[i] = min(tempdp[prev] + 1 if diff pail as previous, + 0 if same pail as previous, dp[prev] + 1 if previous is optimal and different pail)
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
@@ -112,25 +112,74 @@ void readDoubleArr(double *n, int len){
 		}
 }
 
-void solve(){
-	freopen("theme.in", "r", stdin);
-	freopen("theme.out", "w", stdout);
-	int N, ans = 0;
-	readInt(N);
-	int arr[N+5];
-	for(int i = 0; i < N; i++)
-		readInt(arr[i]);
-	for(int i = 1; i < N; i++){
-		int len = 1;
-		for(int j = 0; j < N-i-1 && len < i; j++)
-			if(arr[j]-arr[j+1] == arr[i+j]-arr[i+j+1]){
-				len++;
-				if(len > ans)
-					ans = len;
-			}else
-				len = 1;
+#define INF (20005)
+bool judge(int Q1, int Q2, int* last, int* amount){
+	while(Q1 && Q2){
+		if(last[Q1] != last[Q2])
+			return (last[Q1] < last[Q2]);
+		Q1 -= last[Q1]*amount[Q1];
+		Q2 -= last[Q2]*amount[Q2];
 	}
-	printf("%d\n", ans > 4 ? ans : 0);
+	return !Q1;
+}
+void solvedp(int Q, int P, int* arr, int* dp, int* amount, int* last){
+	fill_n(dp, Q+5, INF);
+	dp[0] = 0;
+	for(int i = 0; i < P; i++){
+		int tempdp[Q+5], tempamount[Q+5], templast[Q+5];
+		memcpy(tempdp, dp, sizeof(int)*(Q+5));
+		memcpy(tempamount, amount, sizeof(int)*(Q+5));
+		memcpy(templast, last, sizeof(int)*(Q+5));
+		for(int j = arr[i]; j <= Q; j++){
+			int prev = j - arr[i];
+			if(tempdp[prev] < INF){
+				if(templast[prev] == arr[i]){
+					templast[j] = arr[i];
+					tempamount[j] = tempamount[prev]+1;
+					tempdp[j] = tempdp[prev];
+				}
+				if(templast[prev] != arr[i]){
+					templast[j] = arr[i];
+					tempamount[j] = 1;
+					tempdp[j] = tempdp[prev]+1;
+				}
+				if(dp[prev] < INF && (dp[prev]+1 < tempdp[j] || (dp[prev]+1 == tempdp[j] && judge(prev, j-arr[i]*tempamount[j], last, amount)))){
+					templast[j] = arr[i];
+					tempamount[j] = 1;
+					tempdp[j] = dp[prev]+1;
+				}
+			}
+			if(tempdp[j] <= dp[j]){
+				dp[j] = tempdp[j];
+				last[j] = templast[j];
+				amount[j] = tempamount[j];
+			}
+		}
+	}
+}
+void recur(int* ans, int Q, int size, int* amount, int* last){
+	for(int i = 0; i < size; i++){
+		ans[i] = last[Q];
+		Q -= amount[Q]*last[Q];
+	}
+}
+void solve(){
+	freopen("milk4.in", "r", stdin);
+	freopen("milk4.out", "w", stdout);
+	int Q, P;
+	readInt(Q);
+	readInt(P);
+	int arr[P+5], dp[Q+5], amount[Q+5], last[Q+5];
+	for(int i = 0; i < P; i++)
+		readInt(arr[i]);
+	sort(arr, arr+P, greater<int>()); //Sorted in descending order for bottom-up dp
+	solvedp(Q, P, arr, dp, amount, last);
+	int ans[Q+5], size = dp[Q];
+	recur(ans, Q, dp[Q], amount, last);
+	printf("%d", size);
+	for(int i = 0; i < size; i++)
+		printf(" %d", ans[i]);
+	printf("\n");
 }
 int main(){
 	solve();
