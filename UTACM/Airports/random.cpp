@@ -115,8 +115,8 @@ double dfs(int node){
 	return (dp[node] = pos/size + 1);
 }
 void solve(){
-	//freopen("input.txt", "r", stdin);
-	//freopen("output.txt", "w", stdout);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 	int T;
 	readInt(T);
 	while(T--){
