@@ -166,6 +166,7 @@ void solve(){
 		hsegs[i][0] = y1; hsegs[i][1] = x1; hsegs[i][2] = x2; hsegs[i][3] = -1;
 		hsegs[i+N][0] = y2; hsegs[i+N][1] = x1; hsegs[i+N][2] = x2; hsegs[i+N][3] = 1;
 	}
+	//Line sweep processing
 	sort(vsegs, vsegs+2*N, cmp);
 	sort(hsegs, hsegs+2*N, cmp);
 	node *start = new node(-10000, 10000);

@@ -6,7 +6,11 @@ LANG: C++
 //Title: Hidden Password
 //Type: Brute Force
 //Complexity: O(N)
-//Solution:
+//Solution: This is somewhat like dynamic programming.
+		//	Use two pointers to indicate positions on the string such that the string at i must be a lexicographically ranked higher in comparison to the string at j, otherwise i start at j.
+		//	At the same time, ensure that string j is lexicographically ranked higher than the strings in between the two pointers, otherwise j starts on a new higher lexicographically ranked string.
+		//	This find the string being ultimately lexicographically ranked higher than all other string.
+		//	Another way to solve this problem is to use Skew's algorithm for suffix arrays.
 #include <bits/stdc++.h>
 //#define getchar() (getchar_unlocked()) //For hackerrank
 using namespace std;
