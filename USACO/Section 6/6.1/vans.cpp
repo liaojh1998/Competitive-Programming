@@ -134,12 +134,12 @@ public:
 		memset(num, 0, sizeof(num));
 		len = 0;
 	}
-	bigNum operator=(int n){
+	void operator=(int n){
 		memset(num, 0, sizeof(num));
 		num[0] = n;
 		len = 1;
 	}
-	bigNum operator=(const bigNum& n){
+	void operator=(const bigNum& n){
 		memcpy(num, n.num, sizeof(n.num));
 		len = n.len;
 	}
