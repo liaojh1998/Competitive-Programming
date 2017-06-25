@@ -166,7 +166,7 @@ private:
 		}
 	public:
 		treap(){
-			root = new node(100005, MOD);
+			root = new node(100005, RAND_MAX);
 		}
 		~treap(){
 			delete root;
@@ -192,7 +192,7 @@ public:
 		delete[] fwt;
 	}
 	void update(size_t i, int value){
-		int p = rand()%MOD;
+		int p = rand();
 		for(i++; i < N; i += (i & -i))
 			fwt[i].insert(value, p);
 	}
@@ -282,11 +282,11 @@ void FastIO::solve(){
 								t = fwt.query(r1, n1) - fwt.query(r1, n2+1) - fwt.query(l1-1, n1) + fwt.query(l1-1, n2+1);
 							else
 								t = fwt.query(r1, n2) - fwt.query(r1, n1+1) - fwt.query(l1-1, n2) + fwt.query(l1-1, n1+1);
-							if(t == 0)
+							if(t)
+								printf("NO\n");
+							else
 								//Case 6: If all tests pass, subarrays must be similar
 								printf("YES\n");
-							else
-								printf("NO\n");
 						}
 					}
 				}

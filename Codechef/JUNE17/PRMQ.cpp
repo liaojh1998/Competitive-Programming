@@ -170,7 +170,6 @@ public:
 };
 
 class FenTreap{
-#define MOD (100000000)
 private:
 	class treap{
 	//Modified treap to query number of elements less than a given element
@@ -234,7 +233,7 @@ private:
 		}
 	public:
 		treap(){
-			root = new node(1000005, MOD);
+			root = new node(1000005, RAND_MAX);
 		}
 		~treap(){
 			delete root;
@@ -259,7 +258,7 @@ public:
 		delete[] fwt;
 	}
 	void update(size_t i, int value){
-		int p = rand()%MOD;
+		int p = rand();
 		for(i++; i < N; i += (i & -i))
 			fwt[i].insert(value, p);
 	}
