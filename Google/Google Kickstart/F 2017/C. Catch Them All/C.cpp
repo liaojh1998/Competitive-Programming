@@ -54,7 +54,8 @@ int main(){
 
 template<typename T> struct matrix{
 	T _00, _01, _10, _11;
-	matrix(T a, T b, T c, T d){
+	matrix(){}
+	matrix(const T& a, const T& b, const T& c, const T& d){
 		_00 = a;
 		_01 = b;
 		_10 = c;
@@ -88,21 +89,17 @@ template<typename T> struct matrix{
 //Matrix of matrices binary exponentiation
 matrix<double> logexp(int N, int P){
 	const matrix<double> one = matrix<double>(1.000000, 0.000000, 0.000000, 1.000000);
+	const matrix<double> zero = matrix<double>(0.000000, 0.000000, 0.000000, 0.000000);
 	const matrix<double> base = matrix<double>(0.000000, 1.000000, 1.000000/(double)N, (double)(N-1.000000)/N);
-	matrix<double> sum = matrix<double>(0.000000, 0.000000, 0.000000, 0.000000);
-	matrix<double> tempsum = one;
-	matrix<double> tempb = one;
-	matrix<double> b = base;
+	matrix<matrix<double> > b = matrix<matrix<double> >(base, one, zero, one);
+	matrix<matrix<double> > ans = matrix<matrix<double> >(one, zero, zero, one);
 	while(P){
-		if(P & 1){
-			sum = tempsum*tempb+sum;
-			tempb *= b;
-		}
-		tempsum = tempsum*b+tempsum;
+		if(P & 1)
+			ans *= b;
 		b *= b;
 		P >>= 1;
 	}
-	return sum*base+one;
+	return ans._00 + ans._01;
 }
 
 void FastIO::solve(){
