@@ -12,7 +12,7 @@
 			The proof given for the theorem is a contradiction which finds deg(u) + deg(v) < vertices in graph cannot have a Hamiltonian path.
 			We'll use an algorithm that fits Ore's theorem to construct the Hamiltonian Path, founded by Palmer (1997), which takes
 			criss-cross pairs of vertices and connect them until no nonadjacent vertex can be found. (Look in references of wikipedia and look at the original document)
-			Time complexity: O(V^2)
+			Time complexity: O(V^3)
 			A better explanation of the algorithm process can be found on stackoverflow. (I'm lazy)
 			http://stackoverflow.com/questions/11273653/palmers-algorithm-for-hamiltonian-cycles	*/
 #include <cstdio>
