@@ -1,0 +1,492 @@
+Dump of assembler code for function _ZN6FastIO5solveEv:
+   0x004014d2 <+0>:	push   %ebp
+   0x004014d3 <+1>:	mov    %esp,%ebp
+   0x004014d5 <+3>:	push   %esi
+   0x004014d6 <+4>:	push   %ebx
+=> 0x004014d7 <+5>:	sub    $0x90,%esp
+   0x004014dd <+11>:	mov    %ecx,-0x7c(%ebp)
+   0x004014e0 <+14>:	mov    -0x7c(%ebp),%eax
+   0x004014e3 <+17>:	lea    -0x60(%ebp),%edx
+   0x004014e6 <+20>:	mov    %edx,(%esp)
+   0x004014e9 <+23>:	mov    %eax,%ecx
+   0x004014eb <+25>:	call   0x4042cc <_ZN6FastIO7readIntERi>
+   0x004014f0 <+30>:	sub    $0x4,%esp
+   0x004014f3 <+33>:	mov    -0x60(%ebp),%eax
+   0x004014f6 <+36>:	lea    -0x1(%eax),%edx
+   0x004014f9 <+39>:	mov    %edx,-0x60(%ebp)
+   0x004014fc <+42>:	test   %eax,%eax
+   0x004014fe <+44>:	setne  %al
+   0x00401501 <+47>:	test   %al,%al
+   0x00401503 <+49>:	je     0x401ab7 <_ZN6FastIO5solveEv+1509>
+   0x00401509 <+55>:	mov    %esp,%eax
+   0x0040150b <+57>:	mov    %eax,%esi
+   0x0040150d <+59>:	mov    -0x7c(%ebp),%eax
+   0x00401510 <+62>:	lea    -0x64(%ebp),%edx
+   0x00401513 <+65>:	mov    %edx,(%esp)
+   0x00401516 <+68>:	mov    %eax,%ecx
+   0x00401518 <+70>:	call   0x4042cc <_ZN6FastIO7readIntERi>
+   0x0040151d <+75>:	sub    $0x4,%esp
+   0x00401520 <+78>:	mov    -0x64(%ebp),%eax
+   0x00401523 <+81>:	add    $0x4,%eax
+   0x00401526 <+84>:	mov    %eax,-0x30(%ebp)
+   0x00401529 <+87>:	add    $0x1,%eax
+   0x0040152c <+90>:	shl    $0x3,%eax
+   0x0040152f <+93>:	lea    0x7(%eax),%edx
+   0x00401532 <+96>:	mov    $0x10,%eax
+   0x00401537 <+101>:	sub    $0x1,%eax
+   0x0040153a <+104>:	add    %edx,%eax
+   0x0040153c <+106>:	mov    $0x10,%ebx
+   0x00401541 <+111>:	mov    $0x0,%edx
+   0x00401546 <+116>:	div    %ebx
+   0x00401548 <+118>:	imul   $0x10,%eax,%eax
+   0x0040154b <+121>:	call   0x402688 <__chkstk_ms>
+   0x00401550 <+126>:	sub    %eax,%esp
+   0x00401552 <+128>:	lea    0xc(%esp),%eax
+   0x00401556 <+132>:	add    $0x7,%eax
+   0x00401559 <+135>:	shr    $0x3,%eax
+   0x0040155c <+138>:	shl    $0x3,%eax
+   0x0040155f <+141>:	mov    %eax,-0x34(%ebp)
+   0x00401562 <+144>:	movl   $0x0,-0xc(%ebp)
+   0x00401569 <+151>:	mov    -0x64(%ebp),%eax
+   0x0040156c <+154>:	cmp    %eax,-0xc(%ebp)
+   0x0040156f <+157>:	jge    0x401596 <_ZN6FastIO5solveEv+196>
+   0x00401571 <+159>:	mov    -0xc(%ebp),%eax
+   0x00401574 <+162>:	lea    0x0(,%eax,8),%edx
+   0x0040157b <+169>:	mov    -0x34(%ebp),%eax
+   0x0040157e <+172>:	add    %eax,%edx
+   0x00401580 <+174>:	mov    -0x7c(%ebp),%eax
+   0x00401583 <+177>:	mov    %edx,(%esp)
+   0x00401586 <+180>:	mov    %eax,%ecx
+   0x00401588 <+182>:	call   0x4041e8 <_ZN6FastIO6readLLERx>
+   0x0040158d <+187>:	sub    $0x4,%esp
+   0x00401590 <+190>:	addl   $0x1,-0xc(%ebp)
+   0x00401594 <+194>:	jmp    0x401569 <_ZN6FastIO5solveEv+151>
+   0x00401596 <+196>:	mov    -0x64(%ebp),%eax
+   0x00401599 <+199>:	add    $0x4,%eax
+   0x0040159c <+202>:	mov    %eax,-0x38(%ebp)
+   0x0040159f <+205>:	add    $0x1,%eax
+   0x004015a2 <+208>:	shl    $0x3,%eax
+   0x004015a5 <+211>:	lea    0x7(%eax),%edx
+   0x004015a8 <+214>:	mov    $0x10,%eax
+   0x004015ad <+219>:	sub    $0x1,%eax
+   0x004015b0 <+222>:	add    %edx,%eax
+   0x004015b2 <+224>:	mov    $0x10,%ebx
+   0x004015b7 <+229>:	mov    $0x0,%edx
+   0x004015bc <+234>:	div    %ebx
+   0x004015be <+236>:	imul   $0x10,%eax,%eax
+   0x004015c1 <+239>:	call   0x402688 <__chkstk_ms>
+   0x004015c6 <+244>:	sub    %eax,%esp
+   0x004015c8 <+246>:	lea    0xc(%esp),%eax
+   0x004015cc <+250>:	add    $0x7,%eax
+   0x004015cf <+253>:	shr    $0x3,%eax
+   0x004015d2 <+256>:	shl    $0x3,%eax
+   0x004015d5 <+259>:	mov    %eax,-0x3c(%ebp)
+   0x004015d8 <+262>:	mov    -0x64(%ebp),%eax
+   0x004015db <+265>:	add    $0x4,%eax
+   0x004015de <+268>:	mov    %eax,-0x40(%ebp)
+   0x004015e1 <+271>:	add    $0x1,%eax
+   0x004015e4 <+274>:	shl    $0x3,%eax
+   0x004015e7 <+277>:	lea    0x7(%eax),%edx
+   0x004015ea <+280>:	mov    $0x10,%eax
+   0x004015ef <+285>:	sub    $0x1,%eax
+   0x004015f2 <+288>:	add    %edx,%eax
+   0x004015f4 <+290>:	mov    $0x10,%ebx
+   0x004015f9 <+295>:	mov    $0x0,%edx
+   0x004015fe <+300>:	div    %ebx
+   0x00401600 <+302>:	imul   $0x10,%eax,%eax
+   0x00401603 <+305>:	call   0x402688 <__chkstk_ms>
+   0x00401608 <+310>:	sub    %eax,%esp
+   0x0040160a <+312>:	lea    0xc(%esp),%eax
+   0x0040160e <+316>:	add    $0x7,%eax
+   0x00401611 <+319>:	shr    $0x3,%eax
+   0x00401614 <+322>:	shl    $0x3,%eax
+   0x00401617 <+325>:	mov    %eax,-0x44(%ebp)
+   0x0040161a <+328>:	mov    -0x64(%ebp),%eax
+   0x0040161d <+331>:	add    $0x4,%eax
+   0x00401620 <+334>:	mov    %eax,-0x48(%ebp)
+   0x00401623 <+337>:	add    $0x1,%eax
+   0x00401626 <+340>:	shl    $0x4,%eax
+   0x00401629 <+343>:	lea    0x7(%eax),%edx
+   0x0040162c <+346>:	mov    $0x10,%eax
+   0x00401631 <+351>:	sub    $0x1,%eax
+   0x00401634 <+354>:	add    %edx,%eax
+   0x00401636 <+356>:	mov    $0x10,%ebx
+   0x0040163b <+361>:	mov    $0x0,%edx
+   0x00401640 <+366>:	div    %ebx
+   0x00401642 <+368>:	imul   $0x10,%eax,%eax
+   0x00401645 <+371>:	call   0x402688 <__chkstk_ms>
+   0x0040164a <+376>:	sub    %eax,%esp
+   0x0040164c <+378>:	lea    0xc(%esp),%eax
+   0x00401650 <+382>:	add    $0x7,%eax
+   0x00401653 <+385>:	shr    $0x3,%eax
+   0x00401656 <+388>:	shl    $0x3,%eax
+   0x00401659 <+391>:	mov    %eax,-0x4c(%ebp)
+   0x0040165c <+394>:	mov    -0x64(%ebp),%eax
+   0x0040165f <+397>:	add    $0x4,%eax
+   0x00401662 <+400>:	mov    %eax,-0x50(%ebp)
+   0x00401665 <+403>:	add    $0x1,%eax
+   0x00401668 <+406>:	shl    $0x4,%eax
+   0x0040166b <+409>:	lea    0x7(%eax),%edx
+   0x0040166e <+412>:	mov    $0x10,%eax
+   0x00401673 <+417>:	sub    $0x1,%eax
+   0x00401676 <+420>:	add    %edx,%eax
+   0x00401678 <+422>:	mov    $0x10,%ebx
+   0x0040167d <+427>:	mov    $0x0,%edx
+   0x00401682 <+432>:	div    %ebx
+   0x00401684 <+434>:	imul   $0x10,%eax,%eax
+   0x00401687 <+437>:	call   0x402688 <__chkstk_ms>
+   0x0040168c <+442>:	sub    %eax,%esp
+   0x0040168e <+444>:	lea    0xc(%esp),%eax
+   0x00401692 <+448>:	add    $0x7,%eax
+   0x00401695 <+451>:	shr    $0x3,%eax
+   0x00401698 <+454>:	shl    $0x3,%eax
+   0x0040169b <+457>:	mov    %eax,-0x54(%ebp)
+   0x0040169e <+460>:	mov    -0x64(%ebp),%eax
+   0x004016a1 <+463>:	add    $0x4,%eax
+   0x004016a4 <+466>:	mov    %eax,-0x58(%ebp)
+   0x004016a7 <+469>:	add    $0x1,%eax
+   0x004016aa <+472>:	shl    $0x2,%eax
+   0x004016ad <+475>:	lea    0x3(%eax),%edx
+   0x004016b0 <+478>:	mov    $0x10,%eax
+   0x004016b5 <+483>:	sub    $0x1,%eax
+   0x004016b8 <+486>:	add    %edx,%eax
+   0x004016ba <+488>:	mov    $0x10,%ebx
+   0x004016bf <+493>:	mov    $0x0,%edx
+   0x004016c4 <+498>:	div    %ebx
+   0x004016c6 <+500>:	imul   $0x10,%eax,%eax
+   0x004016c9 <+503>:	call   0x402688 <__chkstk_ms>
+   0x004016ce <+508>:	sub    %eax,%esp
+   0x004016d0 <+510>:	lea    0xc(%esp),%eax
+   0x004016d4 <+514>:	add    $0x3,%eax
+   0x004016d7 <+517>:	shr    $0x2,%eax
+   0x004016da <+520>:	shl    $0x2,%eax
+   0x004016dd <+523>:	mov    %eax,-0x5c(%ebp)
+   0x004016e0 <+526>:	mov    -0x34(%ebp),%eax
+   0x004016e3 <+529>:	mov    0x4(%eax),%edx
+   0x004016e6 <+532>:	mov    (%eax),%eax
+   0x004016e8 <+534>:	mov    -0x3c(%ebp),%ecx
+   0x004016eb <+537>:	mov    %eax,(%ecx)
+   0x004016ed <+539>:	mov    %edx,0x4(%ecx)
+   0x004016f0 <+542>:	movl   $0x1,-0x10(%ebp)
+   0x004016f7 <+549>:	mov    -0x64(%ebp),%eax
+   0x004016fa <+552>:	cmp    %eax,-0x10(%ebp)
+   0x004016fd <+555>:	jge    0x401734 <_ZN6FastIO5solveEv+610>
+   0x004016ff <+557>:	mov    -0x10(%ebp),%eax
+   0x00401702 <+560>:	lea    -0x1(%eax),%edx
+   0x00401705 <+563>:	mov    -0x3c(%ebp),%eax
+   0x00401708 <+566>:	mov    (%eax,%edx,8),%ecx
+   0x0040170b <+569>:	mov    0x4(%eax,%edx,8),%ebx
+   0x0040170f <+573>:	mov    -0x34(%ebp),%eax
+   0x00401712 <+576>:	mov    -0x10(%ebp),%edx
+   0x00401715 <+579>:	lea    (%eax,%edx,8),%edx
+   0x00401718 <+582>:	mov    (%edx),%eax
+   0x0040171a <+584>:	mov    0x4(%edx),%edx
+   0x0040171d <+587>:	add    %ecx,%eax
+   0x0040171f <+589>:	adc    %ebx,%edx
+   0x00401721 <+591>:	mov    -0x3c(%ebp),%ecx
+   0x00401724 <+594>:	mov    -0x10(%ebp),%ebx
+   0x00401727 <+597>:	mov    %eax,(%ecx,%ebx,8)
+   0x0040172a <+600>:	mov    %edx,0x4(%ecx,%ebx,8)
+   0x0040172e <+604>:	addl   $0x1,-0x10(%ebp)
+   0x00401732 <+608>:	jmp    0x4016f7 <_ZN6FastIO5solveEv+549>
+   0x00401734 <+610>:	movl   $0x0,-0x14(%ebp)
+   0x0040173b <+617>:	mov    -0x64(%ebp),%eax
+   0x0040173e <+620>:	cmp    %eax,-0x14(%ebp)
+   0x00401741 <+623>:	jge    0x40178b <_ZN6FastIO5solveEv+697>
+   0x00401743 <+625>:	mov    -0x3c(%ebp),%eax
+   0x00401746 <+628>:	mov    -0x14(%ebp),%edx
+   0x00401749 <+631>:	mov    (%eax,%edx,8),%ecx
+   0x0040174c <+634>:	mov    0x4(%eax,%edx,8),%ebx
+   0x00401750 <+638>:	mov    -0x34(%ebp),%eax
+   0x00401753 <+641>:	mov    -0x14(%ebp),%edx
+   0x00401756 <+644>:	lea    (%eax,%edx,8),%edx
+   0x00401759 <+647>:	mov    (%edx),%eax
+   0x0040175b <+649>:	mov    0x4(%edx),%edx
+   0x0040175e <+652>:	add    %ecx,%eax
+   0x00401760 <+654>:	adc    %ebx,%edx
+   0x00401762 <+656>:	mov    -0x4c(%ebp),%ecx
+   0x00401765 <+659>:	mov    -0x14(%ebp),%ebx
+   0x00401768 <+662>:	shl    $0x4,%ebx
+   0x0040176b <+665>:	add    %ebx,%ecx
+   0x0040176d <+667>:	mov    %eax,(%ecx)
+   0x0040176f <+669>:	mov    %edx,0x4(%ecx)
+   0x00401772 <+672>:	mov    -0x4c(%ebp),%eax
+   0x00401775 <+675>:	mov    -0x14(%ebp),%edx
+   0x00401778 <+678>:	shl    $0x4,%edx
+   0x0040177b <+681>:	add    %edx,%eax
+   0x0040177d <+683>:	lea    0x8(%eax),%edx
+   0x00401780 <+686>:	mov    -0x14(%ebp),%eax
+   0x00401783 <+689>:	mov    %eax,(%edx)
+   0x00401785 <+691>:	addl   $0x1,-0x14(%ebp)
+   0x00401789 <+695>:	jmp    0x40173b <_ZN6FastIO5solveEv+617>
+   0x0040178b <+697>:	mov    -0x4c(%ebp),%eax
+   0x0040178e <+700>:	mov    -0x64(%ebp),%edx
+   0x00401791 <+703>:	shl    $0x4,%edx
+   0x00401794 <+706>:	add    %eax,%edx
+   0x00401796 <+708>:	mov    -0x4c(%ebp),%eax
+   0x00401799 <+711>:	movl   $0x401460,0x8(%esp)
+   0x004017a1 <+719>:	mov    %edx,0x4(%esp)
+   0x004017a5 <+723>:	mov    %eax,(%esp)
+   0x004017a8 <+726>:	call   0x405148 <_ZSt4sortIP3datPFbRKS0_S3_EEvT_S6_T0_>
+   0x004017ad <+731>:	mov    -0x64(%ebp),%eax
+   0x004017b0 <+734>:	mov    %eax,%edx
+   0x004017b2 <+736>:	lea    -0x6c(%ebp),%eax
+   0x004017b5 <+739>:	mov    %edx,(%esp)
+   0x004017b8 <+742>:	mov    %eax,%ecx
+   0x004017ba <+744>:	call   0x4044c0 <_ZN7FenTreeIiEC1Ej>
+   0x004017bf <+749>:	sub    $0x4,%esp
+   0x004017c2 <+752>:	mov    -0x64(%ebp),%eax
+   0x004017c5 <+755>:	sub    $0x1,%eax
+   0x004017c8 <+758>:	mov    %eax,-0x18(%ebp)
+   0x004017cb <+761>:	mov    -0x5c(%ebp),%eax
+   0x004017ce <+764>:	movl   $0x0,(%eax)
+   0x004017d4 <+770>:	mov    -0x64(%ebp),%eax
+   0x004017d7 <+773>:	sub    $0x1,%eax
+   0x004017da <+776>:	mov    %eax,-0x1c(%ebp)
+   0x004017dd <+779>:	cmpl   $0x0,-0x1c(%ebp)
+   0x004017e1 <+783>:	jle    0x401878 <_ZN6FastIO5solveEv+934>
+   0x004017e7 <+789>:	cmpl   $0x0,-0x18(%ebp)
+   0x004017eb <+793>:	js     0x40184c <_ZN6FastIO5solveEv+890>
+   0x004017ed <+795>:	mov    -0x4c(%ebp),%eax
+   0x004017f0 <+798>:	mov    -0x18(%ebp),%edx
+   0x004017f3 <+801>:	shl    $0x4,%edx
+   0x004017f6 <+804>:	add    %edx,%eax
+   0x004017f8 <+806>:	mov    (%eax),%ecx
+   0x004017fa <+808>:	mov    0x4(%eax),%ebx
+   0x004017fd <+811>:	mov    -0x1c(%ebp),%eax
+   0x00401800 <+814>:	lea    -0x1(%eax),%edx
+   0x00401803 <+817>:	mov    -0x3c(%ebp),%eax
+   0x00401806 <+820>:	lea    (%eax,%edx,8),%edx
+   0x00401809 <+823>:	mov    (%edx),%eax
+   0x0040180b <+825>:	mov    0x4(%edx),%edx
+   0x0040180e <+828>:	cmp    %edx,%ebx
+   0x00401810 <+830>:	jl     0x40184c <_ZN6FastIO5solveEv+890>
+   0x00401812 <+832>:	cmp    %edx,%ebx
+   0x00401814 <+834>:	jg     0x40181a <_ZN6FastIO5solveEv+840>
+   0x00401816 <+836>:	cmp    %eax,%ecx
+   0x00401818 <+838>:	jb     0x40184c <_ZN6FastIO5solveEv+890>
+   0x0040181a <+840>:	mov    -0x18(%ebp),%eax
+   0x0040181d <+843>:	lea    -0x1(%eax),%edx
+   0x00401820 <+846>:	mov    %edx,-0x18(%ebp)
+   0x00401823 <+849>:	mov    -0x4c(%ebp),%edx
+   0x00401826 <+852>:	shl    $0x4,%eax
+   0x00401829 <+855>:	add    %edx,%eax
+   0x0040182b <+857>:	add    $0x8,%eax
+   0x0040182e <+860>:	mov    (%eax),%eax
+   0x00401830 <+862>:	mov    %eax,%edx
+   0x00401832 <+864>:	lea    -0x6c(%ebp),%eax
+   0x00401835 <+867>:	movl   $0x1,0x4(%esp)
+   0x0040183d <+875>:	mov    %edx,(%esp)
+   0x00401840 <+878>:	mov    %eax,%ecx
+   0x00401842 <+880>:	call   0x404424 <_ZN7FenTreeIiE6updateEji>
+   0x00401847 <+885>:	sub    $0x8,%esp
+   0x0040184a <+888>:	jmp    0x4017e7 <_ZN6FastIO5solveEv+789>
+   0x0040184c <+890>:	mov    -0x1c(%ebp),%eax
+   0x0040184f <+893>:	sub    $0x1,%eax
+   0x00401852 <+896>:	mov    %eax,%edx
+   0x00401854 <+898>:	lea    -0x6c(%ebp),%eax
+   0x00401857 <+901>:	mov    %edx,(%esp)
+   0x0040185a <+904>:	mov    %eax,%ecx
+   0x0040185c <+906>:	call   0x4043d0 <_ZN7FenTreeIiE5queryEj>
+   0x00401861 <+911>:	sub    $0x4,%esp
+   0x00401864 <+914>:	mov    %eax,%ecx
+   0x00401866 <+916>:	mov    -0x5c(%ebp),%eax
+   0x00401869 <+919>:	mov    -0x1c(%ebp),%edx
+   0x0040186c <+922>:	mov    %ecx,(%eax,%edx,4)
+   0x0040186f <+925>:	subl   $0x1,-0x1c(%ebp)
+   0x00401873 <+929>:	jmp    0x4017dd <_ZN6FastIO5solveEv+779>
+   0x00401878 <+934>:	mov    -0x64(%ebp),%eax
+   0x0040187b <+937>:	lea    -0x1(%eax),%edx
+   0x0040187e <+940>:	mov    -0x34(%ebp),%eax
+   0x00401881 <+943>:	lea    (%eax,%edx,8),%edx
+   0x00401884 <+946>:	mov    (%edx),%eax
+   0x00401886 <+948>:	mov    0x4(%edx),%edx
+   0x00401889 <+951>:	mov    -0x44(%ebp),%ecx
+   0x0040188c <+954>:	mov    %eax,(%ecx)
+   0x0040188e <+956>:	mov    %edx,0x4(%ecx)
+   0x00401891 <+959>:	mov    -0x64(%ebp),%eax
+   0x00401894 <+962>:	sub    $0x2,%eax
+   0x00401897 <+965>:	mov    %eax,-0x20(%ebp)
+   0x0040189a <+968>:	cmpl   $0x0,-0x20(%ebp)
+   0x0040189e <+972>:	js     0x4018d5 <_ZN6FastIO5solveEv+1027>
+   0x004018a0 <+974>:	mov    -0x20(%ebp),%eax
+   0x004018a3 <+977>:	lea    0x1(%eax),%edx
+   0x004018a6 <+980>:	mov    -0x44(%ebp),%eax
+   0x004018a9 <+983>:	mov    (%eax,%edx,8),%ecx
+   0x004018ac <+986>:	mov    0x4(%eax,%edx,8),%ebx
+   0x004018b0 <+990>:	mov    -0x34(%ebp),%eax
+   0x004018b3 <+993>:	mov    -0x20(%ebp),%edx
+   0x004018b6 <+996>:	lea    (%eax,%edx,8),%edx
+   0x004018b9 <+999>:	mov    (%edx),%eax
+   0x004018bb <+1001>:	mov    0x4(%edx),%edx
+   0x004018be <+1004>:	add    %ecx,%eax
+   0x004018c0 <+1006>:	adc    %ebx,%edx
+   0x004018c2 <+1008>:	mov    -0x44(%ebp),%ecx
+   0x004018c5 <+1011>:	mov    -0x20(%ebp),%ebx
+   0x004018c8 <+1014>:	mov    %eax,(%ecx,%ebx,8)
+   0x004018cb <+1017>:	mov    %edx,0x4(%ecx,%ebx,8)
+   0x004018cf <+1021>:	subl   $0x1,-0x20(%ebp)
+   0x004018d3 <+1025>:	jmp    0x40189a <_ZN6FastIO5solveEv+968>
+   0x004018d5 <+1027>:	mov    -0x64(%ebp),%eax
+   0x004018d8 <+1030>:	sub    $0x1,%eax
+   0x004018db <+1033>:	mov    %eax,-0x24(%ebp)
+   0x004018de <+1036>:	cmpl   $0x0,-0x24(%ebp)
+   0x004018e2 <+1040>:	js     0x40192c <_ZN6FastIO5solveEv+1114>
+   0x004018e4 <+1042>:	mov    -0x44(%ebp),%eax
+   0x004018e7 <+1045>:	mov    -0x24(%ebp),%edx
+   0x004018ea <+1048>:	mov    (%eax,%edx,8),%ecx
+   0x004018ed <+1051>:	mov    0x4(%eax,%edx,8),%ebx
+   0x004018f1 <+1055>:	mov    -0x34(%ebp),%eax
+   0x004018f4 <+1058>:	mov    -0x24(%ebp),%edx
+   0x004018f7 <+1061>:	lea    (%eax,%edx,8),%edx
+   0x004018fa <+1064>:	mov    (%edx),%eax
+   0x004018fc <+1066>:	mov    0x4(%edx),%edx
+   0x004018ff <+1069>:	add    %ecx,%eax
+   0x00401901 <+1071>:	adc    %ebx,%edx
+   0x00401903 <+1073>:	mov    -0x54(%ebp),%ecx
+   0x00401906 <+1076>:	mov    -0x24(%ebp),%ebx
+   0x00401909 <+1079>:	shl    $0x4,%ebx
+   0x0040190c <+1082>:	add    %ebx,%ecx
+   0x0040190e <+1084>:	mov    %eax,(%ecx)
+   0x00401910 <+1086>:	mov    %edx,0x4(%ecx)
+   0x00401913 <+1089>:	mov    -0x54(%ebp),%eax
+   0x00401916 <+1092>:	mov    -0x24(%ebp),%edx
+   0x00401919 <+1095>:	shl    $0x4,%edx
+   0x0040191c <+1098>:	add    %edx,%eax
+   0x0040191e <+1100>:	lea    0x8(%eax),%edx
+   0x00401921 <+1103>:	mov    -0x24(%ebp),%eax
+   0x00401924 <+1106>:	mov    %eax,(%edx)
+   0x00401926 <+1108>:	subl   $0x1,-0x24(%ebp)
+   0x0040192a <+1112>:	jmp    0x4018de <_ZN6FastIO5solveEv+1036>
+   0x0040192c <+1114>:	mov    -0x54(%ebp),%eax
+   0x0040192f <+1117>:	mov    -0x64(%ebp),%edx
+   0x00401932 <+1120>:	shl    $0x4,%edx
+   0x00401935 <+1123>:	add    %eax,%edx
+   0x00401937 <+1125>:	mov    -0x54(%ebp),%eax
+   0x0040193a <+1128>:	movl   $0x401460,0x8(%esp)
+   0x00401942 <+1136>:	mov    %edx,0x4(%esp)
+   0x00401946 <+1140>:	mov    %eax,(%esp)
+   0x00401949 <+1143>:	call   0x405148 <_ZSt4sortIP3datPFbRKS0_S3_EEvT_S6_T0_>
+   0x0040194e <+1148>:	mov    -0x64(%ebp),%eax
+   0x00401951 <+1151>:	mov    %eax,%edx
+   0x00401953 <+1153>:	lea    -0x74(%ebp),%eax
+   0x00401956 <+1156>:	mov    %edx,(%esp)
+   0x00401959 <+1159>:	mov    %eax,%ecx
+   0x0040195b <+1161>:	call   0x4044c0 <_ZN7FenTreeIiEC1Ej>
+   0x00401960 <+1166>:	sub    $0x4,%esp
+   0x00401963 <+1169>:	mov    -0x64(%ebp),%eax
+   0x00401966 <+1172>:	sub    $0x1,%eax
+   0x00401969 <+1175>:	mov    %eax,-0x18(%ebp)
+   0x0040196c <+1178>:	movl   $0x0,-0x28(%ebp)
+   0x00401973 <+1185>:	mov    -0x64(%ebp),%eax
+   0x00401976 <+1188>:	sub    $0x1,%eax
+   0x00401979 <+1191>:	cmp    -0x28(%ebp),%eax
+   0x0040197c <+1194>:	jle    0x401a2b <_ZN6FastIO5solveEv+1369>
+   0x00401982 <+1200>:	cmpl   $0x0,-0x18(%ebp)
+   0x00401986 <+1204>:	js     0x4019f1 <_ZN6FastIO5solveEv+1311>
+   0x00401988 <+1206>:	mov    -0x54(%ebp),%eax
+   0x0040198b <+1209>:	mov    -0x18(%ebp),%edx
+   0x0040198e <+1212>:	shl    $0x4,%edx
+   0x00401991 <+1215>:	add    %edx,%eax
+   0x00401993 <+1217>:	mov    (%eax),%ecx
+   0x00401995 <+1219>:	mov    0x4(%eax),%ebx
+   0x00401998 <+1222>:	mov    -0x28(%ebp),%eax
+   0x0040199b <+1225>:	lea    0x1(%eax),%edx
+   0x0040199e <+1228>:	mov    -0x44(%ebp),%eax
+   0x004019a1 <+1231>:	lea    (%eax,%edx,8),%edx
+   0x004019a4 <+1234>:	mov    (%edx),%eax
+   0x004019a6 <+1236>:	mov    0x4(%edx),%edx
+   0x004019a9 <+1239>:	cmp    %edx,%ebx
+   0x004019ab <+1241>:	jl     0x4019f1 <_ZN6FastIO5solveEv+1311>
+   0x004019ad <+1243>:	cmp    %edx,%ebx
+   0x004019af <+1245>:	jg     0x4019b5 <_ZN6FastIO5solveEv+1251>
+   0x004019b1 <+1247>:	cmp    %eax,%ecx
+   0x004019b3 <+1249>:	jb     0x4019f1 <_ZN6FastIO5solveEv+1311>
+   0x004019b5 <+1251>:	mov    -0x64(%ebp),%ecx
+   0x004019b8 <+1254>:	mov    -0x18(%ebp),%eax
+   0x004019bb <+1257>:	lea    -0x1(%eax),%edx
+   0x004019be <+1260>:	mov    %edx,-0x18(%ebp)
+   0x004019c1 <+1263>:	mov    -0x54(%ebp),%edx
+   0x004019c4 <+1266>:	shl    $0x4,%eax
+   0x004019c7 <+1269>:	add    %edx,%eax
+   0x004019c9 <+1271>:	add    $0x8,%eax
+   0x004019cc <+1274>:	mov    (%eax),%eax
+   0x004019ce <+1276>:	sub    %eax,%ecx
+   0x004019d0 <+1278>:	mov    %ecx,%eax
+   0x004019d2 <+1280>:	sub    $0x1,%eax
+   0x004019d5 <+1283>:	mov    %eax,%edx
+   0x004019d7 <+1285>:	lea    -0x74(%ebp),%eax
+   0x004019da <+1288>:	movl   $0x1,0x4(%esp)
+   0x004019e2 <+1296>:	mov    %edx,(%esp)
+   0x004019e5 <+1299>:	mov    %eax,%ecx
+   0x004019e7 <+1301>:	call   0x404424 <_ZN7FenTreeIiE6updateEji>
+   0x004019ec <+1306>:	sub    $0x8,%esp
+   0x004019ef <+1309>:	jmp    0x401982 <_ZN6FastIO5solveEv+1200>
+   0x004019f1 <+1311>:	mov    -0x64(%ebp),%eax
+   0x004019f4 <+1314>:	sub    -0x28(%ebp),%eax
+   0x004019f7 <+1317>:	sub    $0x2,%eax
+   0x004019fa <+1320>:	mov    %eax,%edx
+   0x004019fc <+1322>:	lea    -0x74(%ebp),%eax
+   0x004019ff <+1325>:	mov    %edx,(%esp)
+   0x00401a02 <+1328>:	mov    %eax,%ecx
+   0x00401a04 <+1330>:	call   0x4043d0 <_ZN7FenTreeIiE5queryEj>
+   0x00401a09 <+1335>:	sub    $0x4,%esp
+   0x00401a0c <+1338>:	mov    %eax,%ecx
+   0x00401a0e <+1340>:	mov    -0x5c(%ebp),%eax
+   0x00401a11 <+1343>:	mov    -0x28(%ebp),%edx
+   0x00401a14 <+1346>:	mov    (%eax,%edx,4),%eax
+   0x00401a17 <+1349>:	add    %eax,%ecx
+   0x00401a19 <+1351>:	mov    -0x5c(%ebp),%eax
+   0x00401a1c <+1354>:	mov    -0x28(%ebp),%edx
+   0x00401a1f <+1357>:	mov    %ecx,(%eax,%edx,4)
+   0x00401a22 <+1360>:	addl   $0x1,-0x28(%ebp)
+   0x00401a26 <+1364>:	jmp    0x401973 <_ZN6FastIO5solveEv+1185>
+   0x00401a2b <+1369>:	movl   $0x0,-0x2c(%ebp)
+   0x00401a32 <+1376>:	mov    -0x64(%ebp),%eax
+   0x00401a35 <+1379>:	cmp    %eax,-0x2c(%ebp)
+   0x00401a38 <+1382>:	jge    0x401a74 <_ZN6FastIO5solveEv+1442>
+   0x00401a3a <+1384>:	mov    -0x64(%ebp),%eax
+   0x00401a3d <+1387>:	sub    $0x1,%eax
+   0x00401a40 <+1390>:	cmp    -0x2c(%ebp),%eax
+   0x00401a43 <+1393>:	jne    0x401a4c <_ZN6FastIO5solveEv+1402>
+   0x00401a45 <+1395>:	mov    $0xa,%ecx
+   0x00401a4a <+1400>:	jmp    0x401a51 <_ZN6FastIO5solveEv+1407>
+   0x00401a4c <+1402>:	mov    $0x20,%ecx
+   0x00401a51 <+1407>:	mov    -0x5c(%ebp),%eax
+   0x00401a54 <+1410>:	mov    -0x2c(%ebp),%edx
+   0x00401a57 <+1413>:	mov    (%eax,%edx,4),%eax
+   0x00401a5a <+1416>:	mov    %ecx,0x8(%esp)
+   0x00401a5e <+1420>:	mov    %eax,0x4(%esp)
+   0x00401a62 <+1424>:	movl   $0x407121,(%esp)
+   0x00401a69 <+1431>:	call   0x4040b0 <printf>
+   0x00401a6e <+1436>:	addl   $0x1,-0x2c(%ebp)
+   0x00401a72 <+1440>:	jmp    0x401a32 <_ZN6FastIO5solveEv+1376>
+   0x00401a74 <+1442>:	lea    -0x74(%ebp),%eax
+   0x00401a77 <+1445>:	mov    %eax,%ecx
+   0x00401a79 <+1447>:	call   0x404524 <_ZN7FenTreeIiED1Ev>
+   0x00401a7e <+1452>:	lea    -0x6c(%ebp),%eax
+   0x00401a81 <+1455>:	mov    %eax,%ecx
+   0x00401a83 <+1457>:	call   0x404524 <_ZN7FenTreeIiED1Ev>
+   0x00401a88 <+1462>:	mov    %esi,%esp
+   0x00401a8a <+1464>:	jmp    0x4014f3 <_ZN6FastIO5solveEv+33>
+   0x00401a8f <+1469>:	mov    %eax,%ebx
+   0x00401a91 <+1471>:	lea    -0x74(%ebp),%eax
+   0x00401a94 <+1474>:	mov    %eax,%ecx
+   0x00401a96 <+1476>:	call   0x404524 <_ZN7FenTreeIiED1Ev>
+   0x00401a9b <+1481>:	jmp    0x401a9f <_ZN6FastIO5solveEv+1485>
+   0x00401a9d <+1483>:	mov    %eax,%ebx
+   0x00401a9f <+1485>:	lea    -0x6c(%ebp),%eax
+   0x00401aa2 <+1488>:	mov    %eax,%ecx
+   0x00401aa4 <+1490>:	call   0x404524 <_ZN7FenTreeIiED1Ev>
+   0x00401aa9 <+1495>:	mov    %ebx,%eax
+   0x00401aab <+1497>:	jmp    0x401aad <_ZN6FastIO5solveEv+1499>
+   0x00401aad <+1499>:	mov    %esi,%esp
+   0x00401aaf <+1501>:	mov    %eax,(%esp)
+   0x00401ab2 <+1504>:	call   0x402680 <_Unwind_Resume>
+   0x00401ab7 <+1509>:	nop
+   0x00401ab8 <+1510>:	lea    -0x8(%ebp),%esp
+   0x00401abb <+1513>:	pop    %ebx
+   0x00401abc <+1514>:	pop    %esi
+   0x00401abd <+1515>:	pop    %ebp
+   0x00401abe <+1516>:	ret    
+End of assembler dump.
